@@ -253,7 +253,7 @@
 									<span class="s_counter"><span>01</span></span>
 									<div class="s_btn">
 										<h3>UX Design</h3>
-										<a class="awilo_fn_circle_btn" href="UX-design.html" target="_blank">
+										<a class="awilo_fn_circle_btn" href="/UX-design.html" target="_blank">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 												fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
 												<path fill-rule="evenodd"
@@ -269,7 +269,7 @@
 									<span class="s_counter"><span>02</span></span>
 									<div class="s_btn">
 										<h3>UI Design</h3>
-										<a class="awilo_fn_circle_btn" href="UI-design.html" target="_blank">
+										<a class="awilo_fn_circle_btn" href="/UI-design.html" target="_blank">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 												fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
 												<path fill-rule="evenodd"
@@ -301,7 +301,7 @@
 									<span class="s_counter"><span>04</span></span>
 									<div class="s_btn">
 										<h3>Logo Creation</h3>
-										<a class="awilo_fn_circle_btn" href="logo-design.html" target="_blank">
+										<a class="awilo_fn_circle_btn" href="/logo-design.html" target="_blank">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 												fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
 												<path fill-rule="evenodd"
@@ -317,7 +317,7 @@
 									<span class="s_counter"><span>05</span></span>
 									<div class="s_btn">
 										<h3>Video Editing</h3>
-										<a class="awilo_fn_circle_btn" href="#">
+										<a class="awilo_fn_circle_btn" href="/video.html" target="_blank">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 												fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
 												<path fill-rule="evenodd"
@@ -333,7 +333,7 @@
 									<span class="s_counter"><span>06</span></span>
 									<div class="s_btn">
 										<h3>Poster Design</h3>
-										<a class="awilo_fn_circle_btn" href="poster-design.html" target="_blank">
+										<a class="awilo_fn_circle_btn" href="/poster-design.html" target="_blank">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 												fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
 												<path fill-rule="evenodd"
@@ -527,9 +527,9 @@
 										</div>
 										<div class="title_cat">
 											<p>
-												<a href="#" class="awilo_fn_circle_link">UX design</a>
-												<span class="sep">/</span>
-												<a href="#" class="awilo_fn_circle_link">Comming Soon</a>
+												<a href="https://www.figma.com/proto/JS0efhGABv44deQDukLKFb/event-v1?page-id=143%3A1294&node-id=156-1121&p=f&viewport=-335%2C233%2C0.17&t=1zFOzX5fWvOQPAof-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=156%3A1121" target="_blank" class="awilo_fn_circle_link">UX design</a>
+												<!-- <span class="sep">/</span>
+												<a href="#" class="awilo_fn_circle_link">Comming Soon</a> -->
 											</p>
 										</div>
 										<div class="title_name">
@@ -884,11 +884,20 @@
 					<div class="video_holder">
 						<div class="container wide">
 							<div class="video_inner">
-
-								<a class="popup-youtube" href="#">
+								<a class="popup-video" href="#video-popup">
 									<span class="icon"></span>
 									<span class="text">Watch Video</span>
 								</a>
+								
+								<div id="video-popup" class="popup">
+									<div class="popup-content">
+										<span class="close">&times;</span>
+										<video autoplay loop muted>
+											<source src="./img/video/Manufacture-video.mp4" type="video/mp4">
+										</video>
+									</div>
+								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -1218,7 +1227,45 @@
 	<script src="js/magnific-popup.js"></script>
 	<script src="js/init.js"></script>
 	<!-- /SCRIPTS -->
+	<script>
+		document.querySelector(".popup-video").addEventListener("click", function(e) {
+    e.preventDefault();
+    document.querySelector("#video-popup").style.display = "flex";
+});
 
+document.querySelector(".close").addEventListener("click", function() {
+    document.querySelector("#video-popup").style.display = "none";
+});
+document.addEventListener("DOMContentLoaded", function () {
+    let popup = document.querySelector("#video-popup");
+    let closeBtn = document.querySelector(".close");
+
+    // Open Popup
+    document.querySelector(".popup-video").addEventListener("click", function (e) {
+        e.preventDefault();
+        popup.style.display = "flex";
+    });
+
+    // Close Popup When Clicking Close Button
+    closeBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+        let video = popup.querySelector("video");
+        video.pause(); // Stop video when closing
+    });
+
+    // Close Popup When Clicking Outside Video
+    popup.addEventListener("click", function (e) {
+        if (e.target === popup) {
+            popup.style.display = "none";
+            let video = popup.querySelector("video");
+            video.pause(); // Stop video when closing
+        }
+    });
+});
+
+
+		</script>
+		
 </body>
 
 </html>
